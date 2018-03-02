@@ -1,0 +1,59 @@
+@import "../../../../variables.scss";
+
+:host {
+  background: $brand-primary;
+  display: block;
+}
+
+.navbar.container-fluid {
+  padding: 0 15px 3px 15px;
+  .navbar-header {
+    margin-right: 10px;
+    color: $text-light;
+    flex: 1 1 auto;
+
+    .navbar-brand {
+      color: $text-light;
+    }
+
+  }
+}
+
+.navbar .navbar-nav {
+  flex-direction: row;
+  flex: 3 1 auto;
+}
+
+.nav > li {
+  float: left;
+  color: $text-light;
+  & > a {
+    border-bottom: 3px solid transparent;
+  }
+  &.active {
+    & > a {
+      border-bottom: 3px solid $brand-success;
+    }
+  }
+  &.cs-route {
+    & > a {
+      color: $text-light;
+      padding: 10px 15px;
+    }
+  }
+}
+
+.nav.navbar.navbar-right{
+  font-size: 0;
+  color: $text-light;
+  flex: 1 1 auto;
+  padding: 0;
+  ::ng-deep .mat-input-wrapper.mat-form-field-wrapper{
+    padding-bottom: 0;
+    font-size: 14px;
+
+    .mat-form-field-label.mat-input-placeholder{
+      color: $text-light;
+    }
+  }
+}

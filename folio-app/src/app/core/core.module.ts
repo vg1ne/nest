@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import {MatSelectModule} from '@angular/material/select';
+
 import { components } from './components';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatSelectModule
   ],
   declarations: [
     components,

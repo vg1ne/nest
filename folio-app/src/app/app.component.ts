@@ -4,7 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <app-main-header></app-main-header>
-    <h1>Folio application</h1>`
+    <section class="main-content">
+      <router-outlet></router-outlet>
+    </section>
+    <app-footer></app-footer>`
 })
 export class AppComponent {
   title = 'app';
