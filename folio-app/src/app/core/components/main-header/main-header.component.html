@@ -1,0 +1,39 @@
+<div class="container-fluid navbar">
+  <div class="navbar-header">
+    <a class="navbar-brand">Folio Web Portal</a>
+  </div>
+  <ul class="nav navbar-nav">
+    <li class="cs-route">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    </li>
+    <li class="cs-route">
+      <a routerLink="/events" routerLinkActive="active">Events</a>
+    </li>
+    <li class="cs-route">
+      <a routerLink="/contacts" routerLinkActive="active">Contacts</a>
+    </li>
+    <li class="cs-route">
+      <a routerLink="/tasks" routerLinkActive="active">Tasks</a>
+    </li>
+    <li class="cs-route">
+      <a routerLink="/files" routerLinkActive="active">Files</a>
+    </li>
+    <li class="cs-route">
+      <a routerLink="/settings" routerLinkActive="active">Settings</a>
+    </li>
+    <li class="cs-route">
+      <a routerLink="/admin" routerLinkActive="active">Admin</a>
+    </li>
+  </ul>
+  <div class="nav navbar navbar-right">
+    <mat-form-field>
+      <mat-select placeholder="USER">
+        <mat-option [value]="'User'">
+          <div>select1</div>
+          <div>select2</div>
+          <div>select3</div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
