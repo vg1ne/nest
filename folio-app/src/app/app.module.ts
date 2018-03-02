@@ -16,6 +16,7 @@ import {DashboardComponent} from './dashboard/containers/dashboard/dashboard.com
 import {DashboardModule} from './dashboard/dashboard.module'
 import {appRoutes} from './app.routing'
 import {AdminModule} from './admin/admin.module';
+import {EventsModule} from './events/events.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {AdminModule} from './admin/admin.module';
 
     DashboardModule,
     AdminModule,
+    EventsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,10 +30,8 @@
   & > a {
     border-bottom: 3px solid transparent;
   }
-  &.active {
-    & > a {
-      border-bottom: 3px solid $brand-success;
-    }
+  & > a.active {
+    border-bottom: 3px solid $brand-success;
   }
   &.cs-route {
     & > a {
