@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {containers} from './containers';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: []
+  declarations: [
+    ...containers,
+  ],
+  exports: [
+    ...containers,
+  ]
 })
 export class ContactsModule { }

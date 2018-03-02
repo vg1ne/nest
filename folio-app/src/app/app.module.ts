@@ -17,6 +17,10 @@ import {DashboardModule} from './dashboard/dashboard.module'
 import {appRoutes} from './app.routing'
 import {AdminModule} from './admin/admin.module';
 import {EventsModule} from './events/events.module';
+import {ContactsModule} from './contacts/contacts.module';
+import {SettingsModule} from './settings/settings.module';
+import {TasksModule} from './tasks/tasks.module';
+import {FilesModule} from './files/files.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,10 @@ import {EventsModule} from './events/events.module';
     DashboardModule,
     AdminModule,
     EventsModule,
+    ContactsModule,
+    SettingsModule,
+    TasksModule,
+    FilesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
