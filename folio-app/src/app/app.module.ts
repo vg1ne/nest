@@ -7,11 +7,15 @@ import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,11 @@ import { AppComponent } from './app.component';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+
+    BrowserAnimationsModule,
+
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
