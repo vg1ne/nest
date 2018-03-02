@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {components} from "./index";
-import {MatPaginatorModule, MatSortModule} from "@angular/material";
+import {MatButtonModule, MatPaginatorModule, MatSortModule} from "@angular/material";
 
 @NgModule({
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule,
   ],
   declarations: [
     ...components,
@@ -18,7 +19,8 @@ import {MatPaginatorModule, MatSortModule} from "@angular/material";
   exports: [
     ...components,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonModule,
   ]
 })
 export class SharedModule { }

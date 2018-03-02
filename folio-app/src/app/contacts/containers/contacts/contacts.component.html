@@ -1,7 +1,8 @@
 <p>
   contacts works!
+  <button mat-button color="primary">Create contact</button>
 </p>
-<table matSort (matSortChange)="sortData($event)">
+<table matSort (matSortChange)="sortData($event)" class="table">
   <tr>
     <th mat-sort-header="name">Dessert (100g)</th>
     <th mat-sort-header="calories">Calories</th>
