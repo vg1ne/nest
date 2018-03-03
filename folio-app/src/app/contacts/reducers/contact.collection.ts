@@ -32,7 +32,7 @@ export function reducer(
       return {
         loaded: true,
         loading: false,
-        contacts: action.payload.map(contact => contact),
+        contacts: action.payload,
       };
     }
 
@@ -46,4 +46,4 @@ export const getLoaded = (state: State) => state.loaded;
 
 export const getLoading = (state: State) => state.loading;
 
-export const getIds = (state: State) => state.contacts;
+export const getContacts = (state: State) => state.contacts;

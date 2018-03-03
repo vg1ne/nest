@@ -8,6 +8,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {StoreModule} from "@ngrx/store";
 import {reducer} from "./reducers/contact.collection";
 import {CollectionEffects} from "./effects/contacts.collection";
+import {components} from "./components";
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import {CollectionEffects} from "./effects/contacts.collection";
   ],
   declarations: [
     ...containers,
+    ...components,
   ],
   providers: [
     ...services,

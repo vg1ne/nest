@@ -25,7 +25,6 @@ export class CollectionEffects {
       this.contactsService
         .getContacts()
         .pipe(
-          toArray(),
           map((contacts: IContact[]) => new LoadSuccess(contacts)),
           catchError(error => of(new LoadFail(error)))
         )
