@@ -1,12 +1,11 @@
 import { Action } from '@ngrx/store';
 import { IContact } from '../models/contact';
+import {Sort} from "@angular/material";
 
 export enum ContactActionTypes {
   Search = '[Contact] Search',
   SearchComplete = '[Contact] Search Complete',
   SearchError = '[Contact] Search Error',
-  Load = '[Contact] Load',
-  Select = '[Contact] Select',
   PageChange = '[Contact] Change page number',
   ItemsPerPageChange = '[Contact] Items per page change',
   SortingChage = '[Contact] Change sort order'
@@ -30,16 +29,28 @@ export class SearchError implements Action {
   constructor(public payload: string) {}
 }
 
-export class Load implements Action {
-  readonly type = ContactActionTypes.Load;
+export class PageChange implements Action {
+  readonly type = ContactActionTypes.PageChange;
 
-  constructor(public payload: IContact) {}
+  constructor(public payload: number) {}
 }
 
-export class Select implements Action {
-  readonly type = ContactActionTypes.Select;
+export class ItemsPerPageChange implements Action {
+  readonly type = ContactActionTypes.ItemsPerPageChange;
 
-  constructor(public payload: string) {}
+  constructor(public payload: number) {}
 }
 
-export type ContactActions = Search | SearchComplete | SearchError | Load | Select;
+export class SortingChange implements Action {
+  readonly type = ContactActionTypes.SortingChage;
+
+  constructor(public payload: Sort) {}
+}
+
+export type ContactActions = Search
+  | SearchComplete
+  | SearchError
+  | PageChange
+  | ItemsPerPageChange
+  | SortingChange
+  ;

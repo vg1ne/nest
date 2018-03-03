@@ -2,4 +2,6 @@
   contacts works!
   <button mat-button color="primary">Create contact</button>
 </p>
-<app-contacts-table [contacts]="contacts$ | async"></app-contacts-table>
+<app-contacts-table
+  [contacts]="contacts$ | async"
+  (onSort)="onSort($event)"></app-contacts-table>

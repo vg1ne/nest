@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IContact} from "../../models/contact";
+import {Sort} from "@angular/material";
 
 @Component({
   selector: 'app-contacts-table',
@@ -8,13 +9,14 @@ import {IContact} from "../../models/contact";
 })
 export class ContactsTableComponent implements OnInit {
   @Input() contacts: IContact[]
+  @Output() onSort = new EventEmitter<Sort>()
   constructor() { }
 
   ngOnInit() {
   }
 
-  sortData() {
-    console.log('sort')
+  sortData(sort: Sort) {
+    this.onSort.emit(sort);
   }
 
 }
