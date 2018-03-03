@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
 import { IContact } from '../models/contact';
+import {Sort} from "@angular/material";
+import {DefaultRequestParams} from "../models/request-params";
 
 export enum CollectionActionTypes {
   Load = '[Collection] Load',
@@ -12,6 +14,7 @@ export enum CollectionActionTypes {
  */
 export class Load implements Action {
   readonly type = CollectionActionTypes.Load;
+  constructor(public payload: DefaultRequestParams){}
 }
 
 export class LoadSuccess implements Action {

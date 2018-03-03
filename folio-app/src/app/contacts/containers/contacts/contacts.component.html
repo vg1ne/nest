@@ -2,7 +2,16 @@
   contacts works!
   <button mat-button color="primary">Create contact</button>
 </p>
+
 <app-contacts-table
   [contacts]="contacts$ | async"
   (onSort)="onSort($event)"></app-contacts-table>
+
+<mat-paginator [length]="100"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="onPageChange($event)">
+
+</mat-paginator>
+
 <app-preloader *ngIf="isLoading$ | async"></app-preloader>

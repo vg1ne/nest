@@ -19,3 +19,4 @@ export const selectLoadingState = createSelector(contactCollectionState, getLoad
 
 export const contactState = createSelector(contactsState, state => state.contact);
 export const selectContact = createSelector(contactState, getContactState)
+export const selectCurrentPage = createSelector(contactState, state => state.currentPage)

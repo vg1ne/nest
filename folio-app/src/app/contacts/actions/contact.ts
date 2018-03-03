@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { IContact } from '../models/contact';
 import {Sort} from "@angular/material";
+import {IRequestParams} from "../models/request-params";
 
 export enum ContactActionTypes {
   Search = '[Contact] Search',
@@ -31,7 +32,6 @@ export class SearchError implements Action {
 
 export class PageChange implements Action {
   readonly type = ContactActionTypes.PageChange;
-
   constructor(public payload: number) {}
 }
 
@@ -44,7 +44,7 @@ export class ItemsPerPageChange implements Action {
 export class SortingChange implements Action {
   readonly type = ContactActionTypes.SortingChage;
 
-  constructor(public payload: Sort) {}
+  constructor(public payload: IRequestParams) {}
 }
 
 export type ContactActions = Search

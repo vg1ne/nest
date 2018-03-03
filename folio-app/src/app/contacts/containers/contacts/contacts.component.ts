@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Sort} from "@angular/material";
-import {ContactsState, selectContact, selectContacts, selectLoadingState} from "../../reducers";
+import {PageEvent, Sort} from "@angular/material";
+import {ContactsState, selectContact, selectContacts, selectCurrentPage, selectLoadingState} from "../../reducers";
 import {Load} from "../../actions/contact.collection";
 import {Store} from "@ngrx/store";
 import {IContact} from "../../models/contact";
 import {Observable} from "rxjs/Observable";
 import {ContactState} from "../../reducers/contact";
-import {SortingChange} from "../../actions/contact";
+import {PageChange, SortingChange} from "../../actions/contact";
+import {DefaultRequestParams} from "../../models/request-params";
 
 @Component({
   selector: 'app-contacts',
@@ -16,19 +17,29 @@ import {SortingChange} from "../../actions/contact";
 export class ContactsComponent implements OnInit {
   private contacts$: Observable<IContact[]>;
   private contact$: Observable<ContactState>;
-  private isLoading$: Store<boolean>;
+  private isLoading$: Observable<boolean>;
+  private currentPage$: Observable<number>;
 
   constructor(private store$: Store<ContactsState>) {
     this.contacts$ = store$.select(selectContacts);
     this.contact$ = store$.select(selectContact);
     this.isLoading$ = store$.select(selectLoadingState);
+    this.currentPage$ = store$.select(selectCurrentPage)
   }
 
   ngOnInit() {
-    this.store$.dispatch(new Load())
+    this.store$.dispatch(new Load(new DefaultRequestParams()))
   }
 
   onSort(sort: Sort) {
-    this.store$.dispatch(new SortingChange(sort))
+    this.store$.dispatch(new SortingChange({
+      currentPage: 1, //stub
+      sortBy: sort.active,
+      sortOrder: sort.direction
+    }))
+  }
+
+  onPageChange(page: PageEvent) {
+    this.store$.dispatch(new PageChange(page.pageIndex))
   }
 }

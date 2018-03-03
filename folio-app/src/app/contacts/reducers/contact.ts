@@ -24,8 +24,15 @@ export function reducer(
       return {
         ...state,
         currentPage: 1,
-        sortBy: action.payload.active,
-        sortOrder: action.payload.direction
+        sortBy: action.payload.sortBy,
+        sortOrder: action.payload.sortOrder
+      };
+    }
+
+    case ContactActionTypes.PageChange: {
+      return {
+        ...state,
+        currentPage: action.payload,
       };
     }
 

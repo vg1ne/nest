@@ -22,9 +22,22 @@ export class CollectionEffects {
   loadCollection$: Observable<Action> = this.actions$.pipe(
     ofType(CollectionActionTypes.Load,
       ContactActionTypes.SortingChage),
-    switchMap(() =>
+    switchMap((action) =>
       this.contactsService
-        .getContacts()
+        .getContacts(action['payload'])
+        .pipe(
+          map((contacts: IContact[]) => new LoadSuccess(contacts)),
+          catchError(error => of(new LoadFail(error)))
+        )
+    )
+  );
+
+  @Effect()
+  loadOnPageChange$: Observable<Action> = this.actions$.pipe(
+    ofType(ContactActionTypes.PageChange),
+    switchMap((action) =>
+      this.contactsService
+        .getContacts(action['payload'])
         .pipe(
           map((contacts: IContact[]) => new LoadSuccess(contacts)),
           catchError(error => of(new LoadFail(error)))
