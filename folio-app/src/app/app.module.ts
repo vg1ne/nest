@@ -37,7 +37,7 @@ import {FilesModule} from './files/files.module';
     // }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production
+      // logOnly: environment.production
     }),
 
     BrowserAnimationsModule,
