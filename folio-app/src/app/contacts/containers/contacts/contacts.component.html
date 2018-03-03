@@ -5,3 +5,4 @@
 <app-contacts-table
   [contacts]="contacts$ | async"
   (onSort)="onSort($event)"></app-contacts-table>
+<app-preloader *ngIf="isLoading$ | async"></app-preloader>

@@ -6,7 +6,7 @@ import {contacts} from "./contacts.mock";
 export class ContactsController {
     @Get()
     root(@Req() request): IContact[] {
-        console.log(request)
-        return contacts;
+        return contacts
     }
 }
+
