@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Sort} from "@angular/material";
-import {ContactsState, contactState, selectContact, selectContacts, selectLoadingState} from "../../reducers";
+import {ContactsState, selectContact, selectContacts, selectLoadingState} from "../../reducers";
 import {Load} from "../../actions/contact.collection";
-import {Store, select} from "@ngrx/store";
+import {Store} from "@ngrx/store";
 import {IContact} from "../../models/contact";
 import {Observable} from "rxjs/Observable";
-import {getContacts} from "../../reducers/contact.collection";
 import {ContactState} from "../../reducers/contact";
+import {SortingChange} from "../../actions/contact";
 
 @Component({
   selector: 'app-contacts',
@@ -29,6 +29,6 @@ export class ContactsComponent implements OnInit {
   }
 
   onSort(sort: Sort) {
-    console.log(sort)
+    this.store$.dispatch(new SortingChange(sort))
   }
 }

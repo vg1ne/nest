@@ -6,9 +6,9 @@ import {services} from "./services";
 import {CoreModule} from "../core/core.module";
 import {EffectsModule} from "@ngrx/effects";
 import {StoreModule} from "@ngrx/store";
-import {reducer} from "./reducers/contact.collection";
 import {CollectionEffects} from "./effects/contacts.collection";
 import {components} from "./components";
+import {reducers} from "./reducers";
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import {components} from "./components";
     SharedModule,
     CoreModule,
 
-    StoreModule.forFeature('contacts', reducer),
+    StoreModule.forFeature('contacts', reducers),
     EffectsModule.forFeature([CollectionEffects]),
   ],
   declarations: [

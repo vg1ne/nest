@@ -1,15 +1,21 @@
-import {getContacts, getLoading, State as ContactCollectionState} from "./contact.collection"
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {ContactState, getContactState} from "./contact";
+import {ActionReducerMap, createFeatureSelector, createSelector} from "@ngrx/store";
+import {getContacts, getLoading, reducer as collectionReducer, State as ContactCollectionState} from "./contact.collection"
+import {ContactState, getContactState, reducer as contactReducer} from "./contact";
 
 export interface ContactsState {
   collection: ContactCollectionState;
   contact: ContactState;
 }
 
-export const contactsState = createFeatureSelector('contacts');
-export const selectContacts = createSelector(contactsState, getContacts)
-export const selectLoadingState = createSelector(contactsState, getLoading)
+export const reducers:ActionReducerMap<ContactsState> = {
+  collection: collectionReducer,
+  contact: contactReducer
+}
 
-export const contactState = createFeatureSelector('contact');
-export const selectContact = createSelector(contactsState, getContactState)
+export const contactsState = createFeatureSelector<ContactsState>('contacts');
+export const contactCollectionState = createSelector(contactsState, state => state.collection)
+export const selectContacts = createSelector(contactCollectionState, getContacts)
+export const selectLoadingState = createSelector(contactCollectionState, getLoading)
+
+export const contactState = createSelector(contactsState, state => state.contact);
+export const selectContact = createSelector(contactState, getContactState)
