@@ -12,7 +12,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module'
 import {RouterModule, Routes} from '@angular/router'
-import {DashboardComponent} from './dashboard/containers/dashboard/dashboard.component'
 import {DashboardModule} from './dashboard/dashboard.module'
 import {appRoutes} from './app.routing'
 import {AdminModule} from './admin/admin.module';

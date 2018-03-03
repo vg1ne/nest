@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Sort} from "@angular/material";
+import {ContactsState} from "../../reducers";
+import {Load} from "../../actions/contact.collection";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-contacts',
@@ -14,10 +17,11 @@ export class ContactsComponent implements OnInit {
     {name: 'Cupcake', calories: '305', fat: '4', carbs: '67', protein: '4'},
     {name: 'Gingerbread', calories: '356', fat: '16', carbs: '49', protein: '4'},
   ];
-  constructor() {
+  constructor(private store$: Store<ContactsState>) {
   }
 
   ngOnInit() {
+    this.store$.dispatch(new Load())
   }
 
   sortData(sort: Sort) {

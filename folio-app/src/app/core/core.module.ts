@@ -5,12 +5,14 @@ import { RouterModule} from '@angular/router'
 import {MatSelectModule} from '@angular/material/select';
 
 import { components } from './components';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
     CommonModule,
     MatSelectModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   declarations: [
     components,
