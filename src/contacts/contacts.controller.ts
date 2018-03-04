@@ -26,7 +26,7 @@ export class ContactsController {
                 })
                 .slice(0, query.itemsPerPage);
         }
-        return (query.sortOrder === 'asc') ? returned : returned.reverse();
+        return (query.sortOrder === 'desc') ? returned : returned.reverse();
     }
 }
 
