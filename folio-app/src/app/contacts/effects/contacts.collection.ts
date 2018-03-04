@@ -34,7 +34,8 @@ export class CollectionEffects {
 
   @Effect()
   loadOnPageChange$: Observable<Action> = this.actions$.pipe(
-    ofType(ContactActionTypes.PageChange),
+    ofType(ContactActionTypes.PageChange,
+      ContactActionTypes.SortingChage),
     withLatestFrom(this.store$.select(selectContact)),
     switchMap((arg) =>
       this.contactsService

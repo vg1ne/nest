@@ -39,7 +39,7 @@ export class ContactsComponent implements OnInit {
   }
 
   onPageChange(page: PageEvent) {
-    console.log(page)
+    // TODO: add length property for receiving request from backend
     this.store$.dispatch(new PageChange(page))
   }
 }
