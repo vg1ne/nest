@@ -8,6 +8,7 @@ const contacts = generateContacts(200);
 export class ContactsController {
     @Get()
     root(@Query() query): IContact[] {
+        // TODO: add paging logic and fix age sorting
         let returned = [];
         if(query.sortBy === 'id' || query.sortBy === 'age'){
             returned = contacts
