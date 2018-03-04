@@ -7,12 +7,14 @@ export interface ContactState {
   currentPage: number;
   sortBy: string;
   sortOrder: string;
+  itemsPerPage: number;
 }
 
 const initialState: ContactState = {
-  currentPage: 1,
+  currentPage: 0,
   sortBy: 'id',
-  sortOrder: 'desc'
+  sortOrder: 'desc',
+  itemsPerPage: 10
 };
 
 export function reducer(
@@ -33,6 +35,13 @@ export function reducer(
       return {
         ...state,
         currentPage: action.payload,
+      };
+    }
+
+    case ContactActionTypes.ItemsPerPageChange: {
+      return {
+        ...state,
+        itemsPerPage: action.payload,
       };
     }
 

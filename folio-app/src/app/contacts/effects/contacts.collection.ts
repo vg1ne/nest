@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
+import {Action, Store} from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -14,14 +14,14 @@ import {
 import { IContact } from '../models/contact';
 import { switchMap, map, catchError, mergeMap } from 'rxjs/operators';
 import {ContactsService} from "../services/contacts.service";
+import {ContactsState} from "../reducers";
 
 @Injectable()
 export class CollectionEffects {
 
   @Effect()
   loadCollection$: Observable<Action> = this.actions$.pipe(
-    ofType(CollectionActionTypes.Load,
-      ContactActionTypes.SortingChage),
+    ofType(CollectionActionTypes.Load),
     switchMap((action) =>
       this.contactsService
         .getContacts(action['payload'])
@@ -46,5 +46,6 @@ export class CollectionEffects {
   );
 
   constructor(private actions$: Actions,
-              private contactsService: ContactsService) {}
+              private contactsService: ContactsService,
+              private store$: Store<ContactsState>) {}
 }
