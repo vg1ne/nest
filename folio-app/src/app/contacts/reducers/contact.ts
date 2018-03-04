@@ -25,7 +25,7 @@ export function reducer(
     case ContactActionTypes.SortingChage: {
       return {
         ...state,
-        currentPage: 1,
+        currentPage: 0,
         sortBy: action.payload.sortBy,
         sortOrder: action.payload.sortOrder
       };
