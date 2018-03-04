@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { IContact } from '../models/contact';
-import {Sort} from "@angular/material";
+import {PageEvent, Sort} from "@angular/material";
 import {IRequestParams} from "../models/request-params";
 import {ISortOrderBy} from "../models/sort-order";
 
@@ -33,13 +33,13 @@ export class SearchError implements Action {
 
 export class PageChange implements Action {
   readonly type = ContactActionTypes.PageChange;
-  constructor(public payload: number) {}
+  constructor(public payload: PageEvent) {}
 }
 
 export class ItemsPerPageChange implements Action {
   readonly type = ContactActionTypes.ItemsPerPageChange;
 
-  constructor(public payload: number) {}
+  constructor(public payload: PageEvent) {}
 }
 
 export class SortingChange implements Action {

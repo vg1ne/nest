@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PageEvent, Sort} from "@angular/material";
 import {
-  ContactsState, selectContact, selectContacts, selectCurrentPage, selectItemsPerPage, selectLoadingState, selectSortBy,
-  selectSortOrder
+  ContactsState, selectContact, selectContacts, selectLoadingState,
 } from "../../reducers";
 import {Load} from "../../actions/contact.collection";
 import {Store} from "@ngrx/store";
@@ -40,6 +39,7 @@ export class ContactsComponent implements OnInit {
   }
 
   onPageChange(page: PageEvent) {
-    this.store$.dispatch(new PageChange(page.pageIndex))
+    console.log(page)
+    this.store$.dispatch(new PageChange(page))
   }
 }

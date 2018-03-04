@@ -34,14 +34,14 @@ export function reducer(
     case ContactActionTypes.PageChange: {
       return {
         ...state,
-        currentPage: action.payload,
+        currentPage: action.payload.pageIndex,
       };
     }
 
     case ContactActionTypes.ItemsPerPageChange: {
       return {
         ...state,
-        itemsPerPage: action.payload,
+        itemsPerPage: action.payload.length,
       };
     }
 
