@@ -10,6 +10,7 @@ export class ContactsService {
   }
 
   getContacts(requestParams:DefaultRequestParams) {
+    // TODO: fix error on items per page change
     let params = new HttpParams()
       .set('currentPage', requestParams.currentPage.toString())
       .set('sortBy', requestParams.sortBy)
