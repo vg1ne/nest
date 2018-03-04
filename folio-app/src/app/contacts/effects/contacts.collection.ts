@@ -12,9 +12,9 @@ import {
   CollectionActionTypes,
 } from './../actions/contact.collection';
 import { IContact } from '../models/contact';
-import { switchMap, map, catchError, mergeMap } from 'rxjs/operators';
+import {switchMap, map, catchError, mergeMap, withLatestFrom} from 'rxjs/operators';
 import {ContactsService} from "../services/contacts.service";
-import {ContactsState} from "../reducers";
+import {ContactsState, selectContact} from "../reducers";
 
 @Injectable()
 export class CollectionEffects {
@@ -35,9 +35,10 @@ export class CollectionEffects {
   @Effect()
   loadOnPageChange$: Observable<Action> = this.actions$.pipe(
     ofType(ContactActionTypes.PageChange),
-    switchMap((action) =>
+    withLatestFrom(this.store$.select(selectContact)),
+    switchMap((arg) =>
       this.contactsService
-        .getContacts(action['payload'])
+        .getContacts(arg[1])
         .pipe(
           map((contacts: IContact[]) => new LoadSuccess(contacts)),
           catchError(error => of(new LoadFail(error)))

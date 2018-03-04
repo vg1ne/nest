@@ -11,7 +11,6 @@ import {Observable} from "rxjs/Observable";
 import {ContactState} from "../../reducers/contact";
 import {PageChange, SortingChange} from "../../actions/contact";
 import {DefaultRequestParams} from "../../models/request-params";
-import {SortOrderType} from "../../models/sort-order";
 
 @Component({
   selector: 'app-contacts',
