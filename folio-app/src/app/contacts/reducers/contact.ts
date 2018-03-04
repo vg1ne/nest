@@ -35,6 +35,7 @@ export function reducer(
       return {
         ...state,
         currentPage: action.payload.pageIndex,
+        itemsPerPage: action.payload.pageSize
       };
     }
 
