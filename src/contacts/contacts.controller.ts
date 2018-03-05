@@ -7,7 +7,7 @@ const contacts = generateContacts(200);
 @Controller('api/contacts')
 export class ContactsController {
     @Get()
-    root(@Query() query): IContact[] {
+    root(@Query() query): {items: IContact[], length: number} {
         // TODO: add paging logic and fix age sorting
         let returned = [];
         if(query.sortBy === 'id' || query.sortBy === 'age'){
@@ -31,7 +31,10 @@ export class ContactsController {
             (query.currentPage * (query.itemsPerPage + 1)) :
             query.itemsPerPage;
         const sorted = (query.sortOrder === 'desc') ? returned : returned.reverse();
-        return sorted.slice(startInd, lastInd)
+        return {
+            items: sorted.slice(startInd, lastInd),
+            length: contacts.length
+        }
     }
 }
 

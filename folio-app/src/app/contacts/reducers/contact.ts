@@ -14,7 +14,7 @@ const initialState: ContactState = {
   currentPage: 0,
   sortBy: 'id',
   sortOrder: 'desc',
-  itemsPerPage: 10
+  itemsPerPage: 10,
 };
 
 export function reducer(

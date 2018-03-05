@@ -1,4 +1,8 @@
-<table matSort (matSortChange)="sortData($event)" class="table">
+<table matSort
+       (matSortChange)="sortData($event)"
+       direction="'desc'"
+       active="'id'"
+       class="table">
   <tr>
     <th mat-sort-header="id">id</th>
     <th mat-sort-header="firstName">First name</th>

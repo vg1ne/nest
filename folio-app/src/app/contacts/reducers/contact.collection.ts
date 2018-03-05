@@ -8,12 +8,14 @@ export interface State {
   loaded: boolean;
   loading: boolean;
   contacts: IContact[];
+  length: number;
 }
 
 const initialState: State = {
   loaded: false,
   loading: false,
   contacts: [],
+  length: 0
 };
 
 export function reducer(
@@ -32,7 +34,8 @@ export function reducer(
       return {
         loaded: true,
         loading: false,
-        contacts: action.payload,
+        contacts: action.payload.items,
+        length: action.payload.length
       };
     }
 
@@ -46,4 +49,9 @@ export const getLoaded = (state: State) => state.loaded;
 
 export const getLoading = (state: State) => state.loading;
 
-export const getContacts = (state: State) => state.contacts;
+export const getContacts = (state: State) => {
+  return {
+    contacts: state.contacts,
+    length: state.length
+  }
+};

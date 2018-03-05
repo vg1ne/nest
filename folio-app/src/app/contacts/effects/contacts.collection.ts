@@ -3,10 +3,9 @@ import {Action, Store} from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import {ContactActionTypes, ContactActions} from "../actions/contact";
+import {ContactActionTypes} from "../actions/contact";
 
 import {
-  CollectionActions,
   LoadFail,
   LoadSuccess,
   CollectionActionTypes,
@@ -26,7 +25,10 @@ export class CollectionEffects {
       this.contactsService
         .getContacts(action['payload'])
         .pipe(
-          map((contacts: IContact[]) => new LoadSuccess(contacts)),
+          map((contacts: {
+            items: IContact[],
+            length: number
+          }) => new LoadSuccess(contacts)),
           catchError(error => of(new LoadFail(error)))
         )
     )
@@ -41,7 +43,10 @@ export class CollectionEffects {
       this.contactsService
         .getContacts(arg[1])
         .pipe(
-          map((contacts: IContact[]) => new LoadSuccess(contacts)),
+          map((contacts: {
+            items: IContact[],
+            length: number
+          }) => new LoadSuccess(contacts)),
           catchError(error => of(new LoadFail(error)))
         )
     )

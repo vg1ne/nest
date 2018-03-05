@@ -20,7 +20,7 @@ export class Load implements Action {
 export class LoadSuccess implements Action {
   readonly type = CollectionActionTypes.LoadSuccess;
 
-  constructor(public payload: IContact[]) {}
+  constructor(public payload: {items: IContact[], length: number}) {}
 }
 
 export class LoadFail implements Action {

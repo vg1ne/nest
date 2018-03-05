@@ -17,9 +17,10 @@ import {DefaultRequestParams} from "../../models/request-params";
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
-  private contacts$: Observable<IContact[]>;
+  private contacts$: Observable<{contacts: IContact[], length: number}>;
   private contact$: Observable<ContactState>;
   private isLoading$: Observable<boolean>;
+  pageSizeOptions = [5, 10, 25, 100];
 
   constructor(private store$: Store<ContactsState>) {
     this.contacts$ = store$.select(selectContacts);
