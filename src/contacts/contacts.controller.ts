@@ -16,10 +16,10 @@ export class ContactsController {
         } else{
             returned = contacts
                 .sort((a, b) => {
-                    if (a[query.sortBy] > b[query.sortBy]) {
+                    if (a[query.sortBy] < b[query.sortBy]) {
                         return 1;
                     }
-                    if (a[query.sortBy] < b[query.sortBy]) {
+                    if (a[query.sortBy] > b[query.sortBy]) {
                         return -1;
                     }
                     return 0;
