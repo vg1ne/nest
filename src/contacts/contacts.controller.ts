@@ -26,13 +26,17 @@ export class ContactsController {
                     return 0;
                 })
         }
-        const startInd = query.currentPage * query.itemsPerPage
-        const lastInd = (query.currentPage > 0) ?
-            (query.currentPage * query.itemsPerPage + parseInt(query.itemsPerPage, 10)) :
+        const queryCurrentPage = parseInt(query.currentPage, 10)
+        const startInd = (queryCurrentPage > 0) ?
+            (queryCurrentPage * query.itemsPerPage) :
+            0;
+        const lastInd = (queryCurrentPage > 0) ?
+            (queryCurrentPage * query.itemsPerPage + parseInt(query.itemsPerPage, 10)) :
             query.itemsPerPage;
+
         const sorted = (query.sortOrder === 'desc') ? returned : returned.reverse();
         return {
-            items: sorted.slice(startInd + 1, lastInd + 1),
+            items: sorted.slice(startInd, lastInd),
             length: contacts.length
         }
     }
