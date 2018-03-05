@@ -4,12 +4,12 @@
 </p>
 
 <app-contacts-table
-  [contact]="contact$ | async"
-  [contacts]="(contacts$ | async).contacts"
+  [pageOptions]="pageOptions$ | async"
+  [contacts]="(contactsResponse$ | async).contacts"
   (onSort)="onSort($event)"></app-contacts-table>
 
-<mat-paginator [length]="(contacts$ | async).length"
-               [pageSize]="(contact$ | async).itemsPerPage"
+<mat-paginator [length]="(contactsResponse$ | async).length"
+               [pageSize]="(pageOptions$ | async).itemsPerPage"
                [pageSizeOptions]="pageSizeOptions"
                (page)="onPageChange($event)">
 

@@ -1,14 +1,13 @@
-import {Get, Controller, Req, Query} from '@nestjs/common';
-import {IContact} from "../../folio-app/src/app/contacts/models/contact";
+import {Controller, Get, Query} from '@nestjs/common';
 import {generateContacts} from "./contacts.mock";
+import {IContactsResponse} from "./contacts-response.model";
 
 const contacts = generateContacts(200);
 
 @Controller('api/contacts')
 export class ContactsController {
     @Get()
-    root(@Query() query): {items: IContact[], length: number} {
-        // TODO: add paging logic and fix age sorting
+    root(@Query() query): IContactsResponse {
         let returned = [];
         if(query.sortBy === 'id' || query.sortBy === 'age'){
             returned = contacts

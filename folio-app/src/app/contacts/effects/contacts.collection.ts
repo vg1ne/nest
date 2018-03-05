@@ -14,6 +14,7 @@ import { IContact } from '../models/contact';
 import {switchMap, map, catchError, mergeMap, withLatestFrom} from 'rxjs/operators';
 import {ContactsService} from "../services/contacts.service";
 import {ContactsState, selectContact} from "../reducers";
+import {IContactsResponse} from "../models/contacts-response.model";
 
 @Injectable()
 export class CollectionEffects {
@@ -25,10 +26,7 @@ export class CollectionEffects {
       this.contactsService
         .getContacts(action['payload'])
         .pipe(
-          map((contacts: {
-            items: IContact[],
-            length: number
-          }) => new LoadSuccess(contacts)),
+          map((contacts: IContactsResponse) => new LoadSuccess(contacts)),
           catchError(error => of(new LoadFail(error)))
         )
     )
@@ -43,10 +41,7 @@ export class CollectionEffects {
       this.contactsService
         .getContacts(arg[1])
         .pipe(
-          map((contacts: {
-            items: IContact[],
-            length: number
-          }) => new LoadSuccess(contacts)),
+          map((contacts: IContactsResponse) => new LoadSuccess(contacts)),
           catchError(error => of(new LoadFail(error)))
         )
     )

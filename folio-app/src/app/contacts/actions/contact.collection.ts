@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { IContact } from '../models/contact';
 import {Sort} from "@angular/material";
 import {DefaultRequestParams} from "../models/request-params";
+import {IContactsResponse} from "../models/contacts-response.model";
 
 export enum CollectionActionTypes {
   Load = '[Collection] Load',
@@ -20,7 +21,7 @@ export class Load implements Action {
 export class LoadSuccess implements Action {
   readonly type = CollectionActionTypes.LoadSuccess;
 
-  constructor(public payload: {items: IContact[], length: number}) {}
+  constructor(public payload: IContactsResponse) {}
 }
 
 export class LoadFail implements Action {

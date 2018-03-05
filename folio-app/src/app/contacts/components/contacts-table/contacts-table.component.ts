@@ -9,8 +9,9 @@ import {ContactState} from "../../reducers/contact";
   styleUrls: ['./contacts-table.component.scss']
 })
 export class ContactsTableComponent implements OnInit {
+  // TODO: provide pageOptions$ binding
   @Input() contacts: IContact[]
-  @Input() contact: ContactState
+  @Input() pageOptions: ContactState
   @Output() onSort = new EventEmitter<Sort>()
   constructor() { }
 

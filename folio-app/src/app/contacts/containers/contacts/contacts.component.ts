@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PageEvent, Sort} from "@angular/material";
 import {
-  ContactsState, selectContact, selectContacts, selectLoadingState,
+  ContactsState, selectContact, selectContactsResponse, selectLoadingState,
 } from "../../reducers";
 import {Load} from "../../actions/contact.collection";
 import {Store} from "@ngrx/store";
@@ -17,14 +17,14 @@ import {DefaultRequestParams} from "../../models/request-params";
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
-  private contacts$: Observable<{contacts: IContact[], length: number}>;
-  private contact$: Observable<ContactState>;
+  private contactsResponse$: Observable<{contacts: IContact[], length: number}>;
+  private pageOptions$: Observable<ContactState>;
   private isLoading$: Observable<boolean>;
   pageSizeOptions = [5, 10, 25, 100];
 
   constructor(private store$: Store<ContactsState>) {
-    this.contacts$ = store$.select(selectContacts);
-    this.contact$ = store$.select(selectContact);
+    this.contactsResponse$ = store$.select(selectContactsResponse);
+    this.pageOptions$ = store$.select(selectContact);
     this.isLoading$ = store$.select(selectLoadingState);
   }
 
@@ -40,7 +40,6 @@ export class ContactsComponent implements OnInit {
   }
 
   onPageChange(page: PageEvent) {
-    // TODO: add length property for receiving request from backend
     this.store$.dispatch(new PageChange(page))
   }
 }

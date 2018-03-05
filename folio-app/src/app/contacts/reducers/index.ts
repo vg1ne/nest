@@ -4,22 +4,19 @@ import {ContactState, getContactState, reducer as contactReducer} from "./contac
 
 export interface ContactsState {
   collection: ContactCollectionState;
-  contact: ContactState;
+  options: ContactState;
 }
 
 export const reducers:ActionReducerMap<ContactsState> = {
   collection: collectionReducer,
-  contact: contactReducer
+  options: contactReducer
 }
 
 export const contactsState = createFeatureSelector<ContactsState>('contacts');
 export const contactCollectionState = createSelector(contactsState, state => state.collection)
-export const selectContacts = createSelector(contactCollectionState, getContacts)
+export const selectContactsResponse = createSelector(contactCollectionState, getContacts)
 export const selectLoadingState = createSelector(contactCollectionState, getLoading)
 
-export const contactState = createSelector(contactsState, state => state.contact);
+export const contactState = createSelector(contactsState, state => state.options);
 export const selectContact = createSelector(contactState, getContactState)
-export const selectCurrentPage = createSelector(contactState, state => state.currentPage)
-export const selectItemsPerPage = createSelector(contactState, state => state.itemsPerPage)
-export const selectSortOrder = createSelector(contactState, state => state.sortOrder)
-export const selectSortBy = createSelector(contactState, state => state.sortBy)
+
