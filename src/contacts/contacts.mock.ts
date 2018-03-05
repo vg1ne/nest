@@ -1,27 +1,8 @@
-import {Contact, IContact} from "../../folio-app/src/app/contacts/models/contact";
-
-export const contacts:IContact[] = [
-    {
-        id: 1,
-        firstName: 'Ivan',
-        lastName: 'Petrov',
-        age: 25
-    },
-    {
-        id: 2,
-        firstName: 'Ilon',
-        lastName: 'Mask',
-        age: 45
-    },
-    {
-        id: 3,
-        firstName: 'Pamela',
-        lastName: 'Anderson',
-        age: 50
-    }
-];
+import * as fs from "fs";
+const names = JSON.parse(fs.readFileSync('./src/contacts/db/names.json', 'utf8'));
 
 export const generateContacts = (amount:number) => {
+    console.log(names)
     const contacts = [];
 
     for(let i = 0; i <= amount; i++){
@@ -38,8 +19,8 @@ export class GeneratedContact{
     constructor(id: number){
         // this.id = Math.round(Math.random() * (1000 - 1) + 1);
         this.id = id;
-        this.firstName = Math.random().toString(36).substring(Math.random() * (10 - 3) + 3);
-        this.lastName = Math.random().toString(36).substring(Math.random() * (10 - 3) + 3);
+        this.firstName = names[Math.round(Math.random() * (names.length - 1) + 1)];
+        this.lastName = names[Math.round(Math.random() * (names.length - 1) + 1)];
         this.age = Math.round(Math.random() * (65 - 18) + 18);
     }
 }
