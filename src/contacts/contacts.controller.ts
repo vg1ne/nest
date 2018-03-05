@@ -28,11 +28,11 @@ export class ContactsController {
         }
         const startInd = query.currentPage * query.itemsPerPage
         const lastInd = (query.currentPage > 0) ?
-            (query.currentPage * (query.itemsPerPage + 1)) :
+            (query.currentPage * query.itemsPerPage + parseInt(query.itemsPerPage, 10)) :
             query.itemsPerPage;
         const sorted = (query.sortOrder === 'desc') ? returned : returned.reverse();
         return {
-            items: sorted.slice(startInd, lastInd),
+            items: sorted.slice(startInd + 1, lastInd + 1),
             length: contacts.length
         }
     }
