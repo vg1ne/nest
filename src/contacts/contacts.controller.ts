@@ -12,8 +12,8 @@ export class ContactsController {
         let returned = [];
         if(query.sortBy === 'id' || query.sortBy === 'age'){
             returned = contacts
-                .sort((a, b) => b[query.sortBy] - a[query.sortBy])
-                .slice(0, query.itemsPerPage);
+                .sort((a, b) => b[query.sortBy] - a[query.sortBy]);
+
         } else{
             returned = contacts
                 .sort((a, b) => {
@@ -25,9 +25,13 @@ export class ContactsController {
                     }
                     return 0;
                 })
-                .slice(0, query.itemsPerPage);
         }
-        return (query.sortOrder === 'desc') ? returned : returned.reverse();
+        const startInd = query.currentPage * query.itemsPerPage
+        const lastInd = (query.currentPage > 0) ?
+            (query.currentPage * (query.itemsPerPage + 1)) :
+            query.itemsPerPage;
+        const sorted = (query.sortOrder === 'desc') ? returned : returned.reverse();
+        return sorted.slice(startInd, lastInd)
     }
 }
 

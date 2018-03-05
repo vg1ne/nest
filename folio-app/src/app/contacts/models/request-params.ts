@@ -12,7 +12,7 @@ export class DefaultRequestParams implements IRequestParams{
   itemsPerPage: number;
 
   constructor(){
-    this.currentPage = 1;
+    this.currentPage = 0;
     this.sortBy = 'id';
     this.sortOrder = 'desc';
     this.itemsPerPage = 10;

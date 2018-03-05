@@ -23,8 +23,9 @@ export const contacts:IContact[] = [
 
 export const generateContacts = (amount:number) => {
     const contacts = [];
+
     for(let i = 0; i <= amount; i++){
-        contacts.push(new GeneratedContact())
+        contacts.push(new GeneratedContact(i + 1))
     }
     return contacts;
 }
@@ -34,8 +35,9 @@ export class GeneratedContact{
     private firstName: string;
     private lastName: string;
     private age: number;
-    constructor(){
-        this.id = Math.round(Math.random() * (1000 - 1) + 1);
+    constructor(id: number){
+        // this.id = Math.round(Math.random() * (1000 - 1) + 1);
+        this.id = id;
         this.firstName = Math.random().toString(36).substring(Math.random() * (10 - 3) + 3);
         this.lastName = Math.random().toString(36).substring(Math.random() * (10 - 3) + 3);
         this.age = Math.round(Math.random() * (65 - 18) + 18);
