@@ -11,4 +11,14 @@ body, app-root {
 
 .main-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.relative {
+  position: relative;
+  &.with-preloader{
+    display: block;
+    flex: 1;
+  }
 }

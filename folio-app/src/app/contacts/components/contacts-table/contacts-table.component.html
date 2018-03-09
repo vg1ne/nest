@@ -1,0 +1,19 @@
+<table matSort
+       (matSortChange)="sortData($event)"
+       direction="'desc'"
+       active="'id'"
+       class="table">
+  <tr>
+    <th mat-sort-header="id">id</th>
+    <th mat-sort-header="firstName">First name</th>
+    <th mat-sort-header="lastName">Last name</th>
+    <th mat-sort-header="age">Age</th>
+  </tr>
+
+  <tr *ngFor="let contact of contacts">
+    <td>{{contact.id}}</td>
+    <td>{{contact.firstName}}</td>
+    <td>{{contact.lastName}}</td>
+    <td>{{contact.age}}</td>
+  </tr>
+</table>
