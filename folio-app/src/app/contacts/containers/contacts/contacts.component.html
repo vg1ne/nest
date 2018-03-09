@@ -1,7 +1,6 @@
-<p>
-  contacts works!
-  <button mat-button color="primary">Create contact</button>
-</p>
+<app-sub-title [title]="title">
+  <button class="btn btn-primary create-contact-btn btn-right">Create contact</button>
+</app-sub-title>
 
 <app-contacts-table
   [pageOptions]="pageOptions$ | async"

@@ -21,6 +21,7 @@ export class ContactsComponent implements OnInit {
   private pageOptions$: Observable<ContactState>;
   private isLoading$: Observable<boolean>;
   pageSizeOptions = [5, 10, 25, 100];
+  title = 'External contacts';
 
   constructor(private store$: Store<ContactsState>) {
     this.contactsResponse$ = store$.select(selectContactsResponse);

@@ -1,4 +1,14 @@
 :host{
   position: relative;
   display: block;
+
+  .btn-right{
+    float: right;
+  }
+  app-contacts-table{
+    margin-top: 25px;
+    display: block;
+    padding: 0 15px;
+    background: white;
+  }
 }

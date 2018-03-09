@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  width: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 12px 15px 9px 15px;
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+
+  .sub-header-text {
+    float: left;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 0;
+  }
+
+}
